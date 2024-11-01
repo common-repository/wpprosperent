@@ -1,0 +1,67 @@
+<?php
+/**
+ * Copyright (c) 2010 WPProsperent.com
+ *
+ * This file is part of WP Prosperent Plugin
+ */
+?>
+
+<?php if ($this->data): ?>
+<div id="wpp-products">
+	<?php $blocksNumber = ceil(count($this->data) / $this->gridColumns) ?>
+	<?php for ($block = 0; $block < $blocksNumber; $block++): ?>
+		<table class="grid">
+			<tbody>
+				<?php $columns = array_slice($this->data, $block * $this->gridColumns, $this->gridColumns) ?>
+				<?php $emptyCell = (count($columns) < $this->gridColumns) ? str_repeat('<td>&nbsp;</td>', $this->gridColumns - count($columns)) : '' ?>
+				<tr class="wpp-image">
+					<?php foreach ($columns as $column): ?>
+					<td>
+						<?php if (strlen($column['image_url'])): ?>
+							<a href="<?php echo esc_url($column['affiliate_url']) ?>"<?php echo $this->linkAttributes ?>><img src="<?php echo esc_url($column['image_url']) ?>" width="125" height="125" alt="<?php echo esc_attr($column['keyword']) ?>" title="<?php echo esc_attr($column['keyword']) ?>" /></a>
+						<?php endif ?>
+					</td>
+					<?php endforeach ?>
+					<?php echo $emptyCell ?>
+				</tr>
+				<tr class="wpp-title">
+					<?php foreach ($columns as $column): ?>
+					<td>
+						<h3><a href="<?php echo esc_url($column['affiliate_url']) ?>"<?php echo $this->linkAttributes ?>><?php echo esc_html($column['keyword']) ?></a></h3>
+					</td>
+					<?php endforeach ?>
+					<?php echo $emptyCell ?>
+				</tr>
+				<tr class="wpp-sale">
+					<?php foreach ($columns as $column): ?>
+					<td>
+						<?php if ($this->useReplacePrice && $this->replacePriceText): ?>
+							<strong class="wpp-price"><a href="<?php echo esc_url($column['affiliate_url']) ?>"<?php echo $this->linkAttributes ?>><?php esc_html_e($this->replacePriceText) ?></a></strong>
+						<?php else: ?>
+							<strong class="wpp-price">
+							<?php if (!empty($column['price_sale']) && $column['price_sale'] < $column['price']): ?>
+								<span class="wpp-price-retail">$<?php echo esc_html($column['price']) ?></span> 
+								<span class="wpp-price-sale">$<?php echo esc_html($column['price_sale']) ?></span>
+							<?php else: ?>
+								$<?php echo esc_html($column['price']) ?>
+							<?php endif ?>
+							</strong>
+						<?php endif ?>
+						<cite class="wpp-merchant"><?php echo esc_html($column['merchant']) ?></cite>
+					</td>
+					<?php endforeach ?>
+					<?php echo $emptyCell ?>
+				</tr>
+				<tr class="wpp-store">
+					<?php foreach ($columns as $column): ?>
+					<td>
+						<a href="<?php echo esc_url($column['affiliate_url']) ?>"<?php echo $this->linkAttributes ?>><img src="<?php echo $this->baseUrl ?>/images/btn-visit-store.gif" /></a>
+					</td>
+					<?php endforeach ?>
+					<?php echo $emptyCell ?>
+				</tr>
+			</tbody>
+		</table>
+	<?php endfor ?>
+</div>
+<?php endif ?>

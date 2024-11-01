@@ -1,0 +1,39 @@
+<?php
+/**
+ * Copyright (c) 2010 WPProsperent.com
+ *
+ * This file is part of WP Prosperent Plugin
+ */
+
+$variables = array (
+	'affiliate_url',
+	'image_url',
+	'image_thumb_url',
+	'keyword',
+	'description',
+	'category',
+	'price',
+	'price_sale',
+	'currency',
+	'merchant',
+	'brand',
+	'upc',
+	'isbn',
+	'sales'
+);
+?>
+
+<?php if ($this->data): ?>
+<div id="wpp-products">
+	<ul class="custom">
+		<?php foreach ($this->data as $row): $output = $this->customTemplate ?>
+		<li>
+			<?php foreach ($row as $variable => $value): if (in_array($variable, $variables)): ?>
+				<?php $output = str_replace('{' . $variable . '}', $value, $output) ?>
+			<?php endif; endforeach ?>
+			<?php echo $output ?>
+		</li>
+		<?php endforeach ?>
+	</ul>
+</div>
+<?php endif ?>

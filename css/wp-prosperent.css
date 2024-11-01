@@ -1,0 +1,254 @@
+@CHARSET "UTF-8";
+
+/* Global rules (CSS reset) */
+#wpp-products, #wpp-products *, #wpp-pagination, #wpp-pagination * {
+	margin: 0;
+	padding: 0;
+}
+
+#wpp-products ul {
+	margin-bottom: 20px;
+}
+
+#wpp-products ul, #wpp-products li, #wpp-pagination ul, #wpp-pagination li {
+	display: block;
+	float: none;
+	clear: both;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	list-position: outside;
+	text-indent: 0;
+}
+
+#wpp-products li:before {
+	content: none;
+}
+
+#wpp-products h3 {
+	clear: none;
+}
+
+#wpp-products img {
+	border: 0;
+}
+
+#wpp-products .wpp-merchant {
+	color: #282;
+}
+
+#wpp-products .wpp-sale .wpp-price-retail {
+	color: #000;
+	font-weight:normal;
+	text-decoration: line-through;
+}
+
+#wpp-products .wpp-sale .wpp-price-sale {
+	color: #f00;
+}
+
+#wpp-products .wpp-clear {
+	clear: both;
+}
+
+
+/* List layout */
+#wpp-products ul.list li {
+	border-bottom: 1px solid #ddd;
+	padding: 0 0 20px;
+	margin-top: 20px;
+	position: relative;
+}
+
+#wpp-products ul.list .wpp-image {
+	float: left;
+	position: relative;
+	width: 90px;
+	z-index: 100;
+}
+
+#wpp-products ul.list .wpp-image img {
+	width: 75px;
+	height: 75px;
+}
+
+#wpp-products ul.list .wpp-product {
+	padding: 0 170px 0 100px;
+	position: relative;
+}
+
+#wpp-products ul.list .wpp-product .wpp-title {
+	margin-bottom: 10px;
+}
+
+#wpp-products ul.list .wpp-product .wpp-description {
+	margin: 0;
+	padding: 0;
+}
+
+#wpp-products ul.list .wpp-sale {
+	float: right;
+	position: relative;
+	text-align: center;
+	width: 150px;
+	z-index: 101;
+}
+
+#wpp-products ul.list .wpp-sale .wpp-price {
+	display: block;
+}
+
+#wpp-products ul.list .wpp-sale .wpp-merchant {
+	display: block;
+	margin: 4px auto;
+}
+
+#wpp-products ul.list .wpp-sale .wpp-store {
+	display: block;
+}
+
+
+/* Multi Column layout */
+#wpp-products table.grid {
+	border: 0;
+	border-bottom: 1px solid #e7e7e7;
+	margin: 0;
+	padding: 0;
+	margin: 20px 0;
+}
+
+#wpp-products table.grid * {
+	margin: 0;
+	padding: 0;
+}
+
+#wpp-products table.grid td {
+	border: 0;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	width: 25%;
+}
+
+#wpp-products table.grid .wpp-image img {
+	width: 125px;
+	height: 125px;
+}
+
+#wpp-products table.grid .wpp-title h3 {
+	font-size: 14px;
+	margin-bottom: 0;
+	padding: 0 10px;
+}
+
+#wpp-products table.grid .wpp-sale {
+	font-size: 13px;
+}
+
+#wpp-products table.grid .wpp-sale .wpp-price {
+	display: block;
+}
+
+#wpp-products table.grid .wpp-sale .wpp-merchant {
+	display: block;
+	margin: 4px auto;
+}
+
+#wpp-products table.grid .wpp-store a {
+	display: block;
+	padding-bottom: 10px;
+}
+
+
+/* Classic layout */
+#wpp-products ul.classic li {
+	padding: 0 0 20px;
+	margin-top: 10px;
+}
+
+#wpp-products ul.classic .wpp-image {
+	float: left;
+	position: relative;
+	width: 80px;
+	z-index: 100;
+}
+
+#wpp-products ul.classic .wpp-image img {
+	width: 75px;
+	height: 75px;
+}
+
+#wpp-products ul.classic .wpp-product {
+	min-height: 90px;
+	padding-left: 100px;
+	position: relative;
+}
+
+#wpp-products ul.classic .wpp-product .wpp-toggle-info {
+	bottom: 10px;
+	position: absolute;
+	right: 0;
+}
+
+#wpp-products ul.classic .wpp-title {
+	font-weight: bold;
+}
+
+#wpp-products ul.classic .wpp-more-info {
+	display: none;
+}
+
+#wpp-products ul.classic .wpp-more-info img {
+	float: left;
+	margin-right: 20px;
+}
+
+#wpp-products ul.classic .wpp-more-info .wpp-title {
+	text-align: center;
+}
+
+#wpp-products ul.classic .wpp-sale {
+	border: 1px solid #ddd;
+	height: 46px;
+	line-height: 46px;
+	overflow: hidden;
+	padding: 10px 20px;
+}
+
+#wpp-products ul.classic .wpp-sale .wpp-price {
+	float: left;
+	text-align: left;
+	width: 30%;
+}
+
+#wpp-products ul.classic .wpp-sale .wpp-merchant {
+	float: left;
+	text-align: center;
+	width: 40%;
+}
+
+#wpp-products ul.classic .wpp-sale .wpp-store {
+	float: left;
+	text-align: right;
+	width: 30%;
+}
+
+
+/* Pagination */
+#wpp-pagination {
+	background: #f7f7f7;
+	clear: both;
+	overflow: hidden;
+	padding: 8px 10px;
+}
+
+#wpp-pagination ul li {
+	display: inline;
+	clear: none;
+	float: left;
+	padding-right: 8px;
+}
+
+#wpp-pagination .wpp-change-page {
+	display: none;
+}

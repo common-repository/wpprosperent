@@ -1,0 +1,14 @@
+<?php
+/**
+ * Copyright (c) 2010 WPProsperent.com
+ *
+ * This file is part of WP Prosperent Plugin
+ */
+
+if ($this->link_new_page):
+	echo ' target="_blank"';
+endif;
+
+if ($this->link_no_follow):
+	echo ' rel="nofollow"';
+endif;

@@ -1,0 +1,33 @@
+@CHARSET "UTF-8";
+
+#wpProsperentShortcode h4 {
+	border-bottom: 1px dashed #dfdfdf;
+	font-size: 14px;
+	margin: 0;
+	padding: 10px 0;
+}
+
+#wpProsperentShortcode .form-table th {
+	vertical-align: middle;
+}
+
+#wpProsperentShortcode .form-table th.top {
+	vertical-align: top;
+}
+
+#wpProsperentShortcodeTemplates div.add-template {
+	margin-bottom: 10px;
+}
+
+#wpProsperentShortcodeTemplates li.template {
+	display: block;
+	margin: 5px 0;
+}
+
+#wpProsperentShortcodeTemplates li.pattern {
+	display: none;
+}
+
+#wpProsperentShortcodeTemplates input[type="text"], #wpProsperentShortcodeTemplates select {
+	margin-right: 10px;
+}

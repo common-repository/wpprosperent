@@ -1,0 +1,65 @@
+<?php
+/**
+ * Copyright (c) 2010 WPProsperent.com
+ *
+ * This file is part of WP Prosperent Plugin
+ */
+?>
+
+<?php if ($this->data): ?>
+<div id="wpp-products">
+	<ul class="classic">
+		<?php foreach ($this->data as $row): ?>
+		<li>
+			<div class="wpp-image">
+				<?php if (strlen($row['image_thumb_url'])): ?>
+					<?php $imageUrl = str_replace('125x125', '75x75', $row['image_thumb_url']) ?>
+					<a href="<?php echo esc_url($row['affiliate_url']) ?>"<?php echo $this->linkAttributes ?>><img src="<?php echo esc_url($imageUrl) ?>" width="75" height="75" alt="<?php echo esc_attr($row['keyword']) ?>" title="<?php echo esc_attr($row['keyword']) ?>" /></a>
+				<?php endif ?>
+			</div>
+			
+			<div class="wpp-product">
+				<h3 class="wpp-title">
+					<a href="<?php echo esc_url($row['affiliate_url']) ?>"<?php echo $this->linkAttributes ?>><?php echo esc_html($row['keyword']) ?></a>
+				</h3>
+			</div>
+			
+			<div class="wpp-clear"></div>
+			
+			<div class="wpp-more-info">
+				<h3 class="wpp-title">
+					<a href="<?php echo esc_url($row['affiliate_url']) ?>"<?php echo $this->linkAttributes ?>><?php echo esc_html($row['keyword']) ?></a>
+				</h3>
+				<p>
+					<?php if (strlen($row['image_url'])): ?>
+						<a href="<?php echo esc_url($row['affiliate_url']) ?>"<?php echo $this->linkAttributes ?>><img src="<?php echo esc_url($row['image_url']) ?>" alt="<?php echo esc_attr($row['keyword']) ?>" title="<?php echo esc_attr($row['keyword']) ?>" /></a>
+					<?php endif ?>
+					<?php echo esc_html($row['description']) ?>
+				</p>
+			</div>
+			
+			<div class="wpp-clear"></div>
+		
+			<div class="wpp-sale">
+				<div class="wpp-wrapper">
+					<?php if ($this->useReplacePrice && $this->replacePriceText): ?>
+						<strong class="wpp-price"><a href="<?php echo esc_url($row['affiliate_url']) ?>"<?php echo $this->linkAttributes ?>><?php esc_html_e($this->replacePriceText) ?></a></strong>
+					<?php else: ?>
+						<strong class="wpp-price">Price:
+							<?php if (!empty($row['price_sale']) && $row['price_sale'] < $row['price']): ?>
+								<span class="wpp-price-retail">$<?php echo esc_html($row['price']) ?></span> 
+								<a class="wpp-price-sale" href="<?php echo esc_url($row['affiliate_url']) ?>"<?php echo $this->linkAttributes ?>>$<?php echo esc_html($row['price_sale']) ?></a>
+							<?php else: ?>
+								<a href="<?php echo esc_url($row['affiliate_url']) ?>"<?php echo $this->linkAttributes ?>>$<?php echo esc_html($row['price']) ?></a>
+							<?php endif ?>
+						</strong>
+					<?php endif ?>
+					<cite class="wpp-merchant"><?php echo esc_html($row['merchant']) ?></cite>
+					<a class="wpp-store" href="<?php echo esc_url($row['affiliate_url']) ?>"<?php echo $this->linkAttributes ?>><img src="<?php echo $this->baseUrl ?>/images/btn-visit-store.gif" /></a>
+				</div>
+			</div>
+		</li>
+		<?php endforeach ?>
+	</ul>
+</div>
+<?php endif ?>

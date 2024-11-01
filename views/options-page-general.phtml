@@ -1,0 +1,173 @@
+<?php
+/**
+ * Copyright (c) 2010 WPProsperent.com
+ *
+ * This file is part of WP Prosperent Plugin
+ */
+?>
+
+<div class="wrap">
+	
+	<h2><?php esc_html_e($this->heading) ?></h2>
+	
+	<div class="postbox-container">
+		<div class="metabox-holder">
+			<div class="meta-box-sortables ui-sortable">
+				
+				<form id="general-options" method="post" action="">
+					
+					<div class="postbox">
+						<div class="handlediv" title="Click to toggle"><br /></div>
+						<h3 class="hndle"><span>Prosperent API</span></h3>
+						<div class="inside">
+							<p>	
+								<a href="http://www.wpprosperent.com/plugin/">Click here for WP Prosperent usage instructions.</a>
+							<p>
+							</p>
+								<label for="api_key">API Key:</label>
+								<input type="text" id="api_key" name="api_key" value="<?php esc_attr_e($this->api_key) ?>" size="32" />
+								<a href= "http://www.wpprosperent.com/signup/">Click here to get API key</a>
+							</p>
+							
+							<p>
+								<label for="channel_id">Default Channel ID:</label>
+								<input type="text" id="channel_id" name="channel_id" value="<?php esc_attr_e($this->channel_id) ?>" />
+							</p>
+							
+							<p>
+								<label for="debug_mode">Debug Mode:</label>
+								<input type="checkbox" id="debug_mode" name="debug_mode"<?php if ($this->debug_mode): ?> checked="checked"<?php endif ?> />
+							</p>
+						</div>
+					</div>
+					
+					<div class="postbox">
+						<div class="handlediv" title="Click to toggle"><br /></div>
+						<h3 class="hndle"><span>Keywords</span></h3>
+						<div class="inside">
+							<p>
+								<label for="keyword">Side wide default keyword:</label>
+								<input type="text" id="keyword" name="keyword" value="<?php esc_attr_e($this->keyword) ?>" size="50" />
+							</p>
+							
+							<p>
+								<label for="keyword_use_search_referrer">Use search referrer keyword:</label>
+								<input type="checkbox" id="keyword_use_search_referrer" name="keyword_use_search_referrer"<?php if ($this->keyword_use_search_referrer): ?> checked="checked"<?php endif ?> />
+							</p>
+							
+							<p>
+								<label for="keyword_use_title">Use title as keyword:</label>
+								<input type="checkbox" id="keyword_use_title" name="keyword_use_title"<?php if ($this->keyword_use_title): ?> checked="checked"<?php endif ?> />
+							</p>
+							
+							<p>
+								<label for="keyword_use_title_as_backup">Use title as backup keyword:</label>
+								<input type="checkbox" id="keyword_use_title_as_backup" name="keyword_use_title_as_backup"<?php if ($this->keyword_use_title_as_backup): ?> checked="checked"<?php endif ?> />
+							</p>
+							
+							<p>
+								<label for="keyword_append_global">Append global keyword:</label>
+								<input type="checkbox" id="keyword_append_global" name="keyword_append_global"<?php if ($this->keyword_append_global): ?> checked="checked"<?php endif ?> />
+							</p>
+						</div>
+					</div>
+					
+					<div class="postbox">
+						<div class="handlediv" title="Click to toggle"><br /></div>
+						<h3 class="hndle"><span>Appearance</span></h3>
+						<div class="inside">
+							<p>
+								<label for="template">Template:</label>
+								<select id="template" name="template">
+									<?php foreach ($this->supportedTemplates as $code => $title): ?>
+									<option value="<?php esc_attr_e($code) ?>"<?php if ($code == $this->template): ?> selected="selected"<?php endif ?>>
+										<?php esc_html_e($title) ?>
+									</option>
+									<?php endforeach ?>
+								</select>
+								<label for="grid_columns">Grid template, # of columns:</label>
+								<select id="grid_columns" name="grid_columns">
+									<?php foreach ($this->supportedGridColumns as $code => $title): ?>
+									<option value="<?php esc_attr_e($code) ?>"<?php if ($code == $this->grid_columns): ?> selected="selected"<?php endif ?>>
+										<?php esc_html_e($title) ?>
+									</option>
+									<?php endforeach ?>
+								</select>
+							</p>
+							
+							<p>
+								<label for="use_replace_price">Use replace price:</label>
+								<input type="checkbox" id="use_replace_price" name="use_replace_price"<?php if ($this->use_replace_price): ?> checked="checked"<?php endif ?> />
+								<label for="replace_price_text">Replace price with text:</label>
+								<input type="text" id="replace_price_text" name="replace_price_text" value="<?php esc_attr_e($this->replace_price_text) ?>" size="25" />
+							</p>
+							
+							<p><label for="custom_css">Custom CSS:</label></p>
+							<p><textarea id="custom_css" name="custom_css" rows="6" cols="80"><?php echo esc_html($this->custom_css) ?></textarea></p>
+							
+							<p><label for="custom_template">Custom Template:</label></p>
+							<p><textarea id="custom_template" name="custom_template" rows="10" cols="80"><?php echo $this->custom_template ?></textarea></p>
+							<p>
+								<strong>Supported variables:</strong>
+								<em>
+									{affiliate_url}, {image_url}, {image_thumb_url}, {keyword}, {description}, {category}, {price}, {price_sale}, {currency},
+									{merchant}, {brand}, {upc}, {isbn}, {sales}
+								</em>
+							</p>
+						</div>
+					</div>
+					
+					<div class="postbox">
+						<div class="handlediv" title="Click to toggle"><br /></div>
+						<h3 class="hndle"><span>Pagination</span></h3>
+						<div class="inside">
+							<p>
+								<label for="use_pagination">Use pagination:</label>
+								<input type="checkbox" id="use_pagination" name="use_pagination"<?php if ($this->use_pagination): ?> checked="checked"<?php endif ?> />
+							</p>
+							<p>
+								<label for="limit_page">Items Per Page:</label>
+								<input type="text" id="limit_page" name="limit_page" value="<?php esc_attr_e($this->limit_page) ?>" size="4" width="3" />
+							</p>
+						</div>
+					</div>
+					
+					<div class="postbox">
+						<div class="handlediv" title="Click to toggle"><br /></div>
+						<h3 class="hndle"><span>Links</span></h3>
+						<div class="inside">
+							<p>
+								<label for="link_no_follow">No Follow:</label>
+								<input type="checkbox" id="link_no_follow" name="link_no_follow"<?php if ($this->link_no_follow): ?> checked="checked"<?php endif ?> />
+							</p>
+							
+							<p>
+								<label for="link_new_page">Open in a New Window:</label>
+								<input type="checkbox" id="link_new_page" name="link_new_page"<?php if ($this->link_new_page): ?> checked="checked"<?php endif ?> />
+							</p>
+							
+							<p>
+								<label for="link_use_cloaking">Use cloaking:</label>
+								<input type="checkbox" id="link_use_cloaking" name="link_use_cloaking"<?php if ($this->link_use_cloaking): ?> checked="checked"<?php endif ?> />
+							</p>
+							
+							<p>
+								<label for="link_cloak_dir">Link cloak directory:</label>
+								<code><?php echo get_bloginfo('url') ?>/<input type="text" id="link_cloak_dir" name="link_cloak_dir" value="<?php esc_attr_e($this->link_cloak_dir) ?>" size="16" />/</code>
+							</p>
+						</div>
+					</div>
+					
+					<p class="submit">
+						<?php wp_nonce_field($this->onceAction) ?>
+						<input type="hidden" name="action" value="save" />
+						<input class="button-primary" type="submit" name="submit" value="Save Changes" />
+					</p>
+					
+				</form>
+				
+			</div>
+		</div>
+	</div>
+	
+</div>

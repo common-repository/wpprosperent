@@ -1,0 +1,132 @@
+<?php
+/**
+ * Copyright (c) 2010 WPProsperent.com
+ *
+ * This file is part of WP Prosperent Plugin
+ */
+
+function renderTokenOptionsGroup($title)
+{
+	?>
+		<tr>
+			<th scope="row" colspan="2">
+				<h4><?php esc_html_e($title) ?></h4>
+			</th>
+		</tr>
+	<?php
+}
+
+function renderTokenOption(WPProsperent_View $view, $title, $name, $type, $customOptions = array())
+{
+	?>
+	<tr>
+		<th scope="row">
+			<label for="wpProsperentShortcode_<?php esc_attr_e($name) ?>"><?php esc_html_e($title) ?>:</label>
+		</th>
+		<td>
+	<?php
+	
+	if (empty($customOptions)):
+		$customOptions = array('yes' => 'Yes', 'no' => 'No');
+	endif;
+	
+	if ($type == 'boolean' || $type == 'custom'):
+	?>
+		<select name="wpProsperentShortcode[<?php esc_attr_e($name) ?>]" id="wpProsperentShortcode_<?php esc_attr_e($name) ?>">
+			<option value="default">Default</option>
+			<?php foreach ($customOptions as $value => $label): ?>
+			<option value="<?php esc_attr_e($value) ?>"><?php esc_html_e($label) ?></option>
+			<?php endforeach ?>
+		</select>
+		<span class="form-input-tip">
+			<em>Default value:</em>
+			<?php if ($type == 'custom'): ?>
+				<strong><?php esc_html_e($customOptions[$view->$name]) ?></strong>
+			<?php else: ?>
+				<strong><?php if ($view->$name): ?>Yes<?php else: ?>No<?php endif ?></strong>
+			<?php endif ?>
+		</span>
+	<?php
+	else:
+	?>
+		<input<?php if ($type == 'integer'): ?> class="integer"<?php endif ?> type="text" name="wpProsperentShortcode[<?php esc_attr_e($name) ?>]" id="wpProsperentShortcode_<?php esc_attr_e($name) ?>" size="<?php echo ($type == 'integer') ? 4 : 40 ?>" />
+		<span class="form-input-tip">
+			<?php if (strlen($view->$name)): ?>
+				<em>Default value:</em> <strong><?php esc_html_e($view->$name) ?></strong>
+			<?php else: ?>
+				<em>Default value not specified</em>
+			<?php endif ?>
+		</span>
+	<?php
+	endif;
+	
+	?>
+		</td>
+	</tr>
+	<?php
+}
+
+?>
+<table class="form-table">
+	<tbody>
+		<?php
+			renderTokenOptionsGroup('Prosperent API');
+			renderTokenOption($this, 'Channel ID', 'channel_id', 'text');
+			renderTokenOption($this, 'Debug Mode', 'debug_mode', 'boolean');
+			
+			renderTokenOptionsGroup('Keywords');
+			renderTokenOption($this, 'Keyword', 'keyword', 'text');
+			renderTokenOption($this, 'Use search referrer keyword', 'keyword_use_search_referrer', 'boolean');
+			renderTokenOption($this, 'Use title as keyword', 'keyword_use_title', 'boolean');
+			renderTokenOption($this, 'Use title as backup keyword', 'keyword_use_title_as_backup', 'boolean');
+			renderTokenOption($this, 'Append global keyword', 'keyword_append_global', 'boolean');
+			
+			renderTokenOptionsGroup('Template');
+			renderTokenOption($this, 'Single template', 'template', 'custom', $this->supportedTemplates);
+		?>
+			<tr>
+				<th scope="row" class="top">or Multiple templates:</th>
+				<td id="wpProsperentShortcodeTemplates">
+					<div class="add-template">
+						<a href="#" class="button add-template">Add Template</a>
+					</div>
+					<ul>
+						<li class="template pattern">
+							<label>Template:</label>
+							<select name="wpProsperentShortcode[multi_templates]" id="wpProsperentShortcode_multi_templates">
+								<option value="default">Default</option>
+								<?php foreach ($this->supportedTemplates as $value => $label): ?>
+								<option value="<?php esc_attr_e($value) ?>"><?php esc_html_e($label) ?></option>
+								<?php endforeach ?>
+							</select>
+							
+							<label>Number of items:</label>
+							<input type="text" class="number" name="wpProsperentShortcode[multi_templates_items]" size="2" width="2" value="1" />
+							
+							<a href="#" class="button remove-template">Remove</a>
+						</li>
+					</ul>
+				</td>
+			</tr>		
+		<?php
+		
+			renderTokenOptionsGroup('Appearance');
+			renderTokenOption($this, 'Use replace price', 'use_replace_price', 'boolean');
+			renderTokenOption($this, 'Replace price with text', 'replace_price_text', 'text');
+			
+			renderTokenOptionsGroup('Pagination');
+			renderTokenOption($this, 'Use pagination', 'use_pagination', 'boolean');
+			renderTokenOption($this, 'Items per page', 'limit_page', 'integer');
+			
+			renderTokenOptionsGroup('Links');
+			renderTokenOption($this, 'No Follow', 'link_no_follow', 'boolean');
+			renderTokenOption($this, 'Open in a New Tab', 'link_new_page', 'boolean');
+		?>
+	</tbody>
+</table>
+
+<p class="submit">
+	<input type="button" value="<?php esc_attr_e('Send Token to Editor &raquo;') ?>" />
+</p>
+
+<div class="clear"></div>

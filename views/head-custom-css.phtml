@@ -1,0 +1,17 @@
+<?php
+/**
+ * Copyright (c) 2010 WPProsperent.com
+ *
+ * This file is part of WP Prosperent Plugin
+ */
+?>
+<!-- WP Prosperent Custom CSS -->
+<style type="text/css" media="all">
+	/* Grid Template */
+	#wpp-products table.grid td {
+		width: <?php echo floor(100 / $this->gridColumns) ?>%;
+	}
+	/* Custom CSS */
+	<?php echo $this->customCss ?>
+</style>
+<!-- / WP Prosperent Custom CSS -->

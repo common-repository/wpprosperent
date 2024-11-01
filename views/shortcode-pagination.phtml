@@ -1,0 +1,32 @@
+<?php
+/**
+ * Copyright (c) 2010 WPProsperent.com
+ *
+ * This file is part of WP Prosperent Plugin
+ */
+?>
+
+<?php $pagesTotal = ceil($this->totalRecords / $this->itemsPerPage) ?>
+<?php if ($pagesTotal): ?>
+<div id="wpp-pagination">
+	<ul class="wpp-pages">
+		<li><strong>Page:</strong></li>
+		<?php for ($page = 1; $page <= $pagesTotal; $page++): ?>
+		<li>
+			<?php if ($page == $this->pageNumber): ?>
+			<strong><?php echo $page ?></strong>
+			<?php else: ?>
+			<a href="#" rel="<?php echo $page ?>"><?php echo $page ?></a>
+			<?php endif ?>
+		</li>
+		<?php endfor ?>
+	</ul>
+	
+	<form class="wpp-change-page" action="" method="post">
+		<div>
+			<input type="hidden" name="wpp_post_id" value="<?php echo $GLOBALS['post']->ID ?>" />
+			<input type="hidden" name="wpp_page" value="" />
+		</div>
+	</form>
+</div>
+<?php endif ?>
